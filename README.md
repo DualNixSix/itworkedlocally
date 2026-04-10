@@ -88,7 +88,7 @@ Authors are chosen from a predefined list of well known business leaders, invent
 ### Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/DualNixSix/itworkedlocally.git
 cd itworkedlocally
 ```
 
