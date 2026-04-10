@@ -98,6 +98,11 @@ cd itworkedlocally
 touch .env
 nano .env
 ```
+or
+```bash
+touch .env
+vi .env
+```
 
 ### Full Project Initialization
 
