@@ -1,0 +1,32 @@
+# docker-compose.yml
+services:
+  api:
+    build: .                     # build the Django API image from the local Dockerfile
+    expose:
+      - "8000"              # expose container port 8000 to host port 8000
+    depends_on:
+      - db                       # ensure the database container starts before the API
+  
+  web:
+    build:
+      context: .               # build image from current project directory
+      dockerfile: webserver/Dockerfile  # use nginx Dockerfile for frontend
+    ports:
+      - "127.0.0.1:81:80"                # expose nginx on public port 81 which will be proxy pass on VPS
+    depends_on:
+      - api                    # ensure api container starts before nginx
+
+  db:
+    image: postgres:15           # use official Postgres 15 image
+    environment:
+      - POSTGRES_USER=postgres   # database username
+      - POSTGRES_PASSWORD=postgres  # database password
+      - POSTGRES_DB=itworkedlocally_db  # initial database name
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data  # persist DB data between restarts
+    expose:
+      - "5432"                   # expose psql on port 5432
+
+volumes:
+  postgres_data:                 # named volume to store Postgres data
+

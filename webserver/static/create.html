@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Thread</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+
+<!-- top navigation bar -->
+<header class="navbar">
+
+    <!-- left section: logo + title -->
+    <div class="nav-left">
+        <img src="/favicon.ico" alt="Logo" class="logo">
+        <a href="/" class="brand">IT Worked Locally</a>
+    </div>
+
+    <!-- center navigation links -->
+    <nav class="nav-center">
+        <a href="/">Home</a>
+        <a href="create" id="create-link">Create Thread</a>
+    </nav>
+
+    <!-- right authentication controls -->
+    <div class="nav-right">
+
+        <!-- auth form controls -->
+        <form class="auth-controls">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+
+            <button type="button" id="signup-btn">Signup</button>
+            <button type="button" id="login-btn">Login</button>
+
+            <div class="logout-wrap">
+                <button type="button" id="logout-btn">Logout</button>
+            </div>
+        </form>
+
+    </div>
+        <!-- authentication status text -->
+        <p id="auth-status"></p>
+        
+</header>
+
+<main class="container">
+
+    <!-- create thread section -->
+    <section>
+        <h2>Create Thread</h2>
+
+        <form id="create-post-form">
+            <select id="post-category" required></select>
+            <input type="text" id="post-title" placeholder="Title" required>
+            <input type="url" id="post-repo" placeholder="Repo URL (optional)">
+            <textarea id="post-body" placeholder="Body" required></textarea>
+            <button type="submit">Post Thread</button>
+        </form>
+
+        <p id="post-status"></p>
+    </section>
+
+</main>
+<div class="container">
+    <div id="random-footer" class="post-card random-card"></div>
+</div>
+</body>
+</html>

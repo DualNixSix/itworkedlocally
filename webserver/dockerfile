@@ -1,0 +1,19 @@
+# build stage used to compile React application
+FROM node:20-alpine AS build
+# set working directory inside build container
+WORKDIR /app
+# copy React dependency definitions
+COPY react/itworkedlocally/package*.json ./
+# install node dependencies required for build
+RUN npm install
+# copy React project source code into container
+COPY react/itworkedlocally .
+# generate optimized production build output
+RUN npm run build
+
+# production stage using nginx web server
+FROM nginx:alpine
+# copy nginx configuration
+COPY webserver/default.conf /etc/nginx/conf.d/default.conf
+# copy compiled React build files into nginx public directory
+COPY --from=build /app/dist /usr/share/nginx/html
