@@ -8,7 +8,7 @@ The platform also pulls in GitHub repository information such as stars and last 
 
 The project is will be available locally at:
 
-`http://127.0.0.1:81`
+`http://127.0.0.1:81` or `http://localhost:81`
 
 The deployed version will be available at:
 
